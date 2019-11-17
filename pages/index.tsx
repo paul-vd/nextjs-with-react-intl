@@ -1,7 +1,6 @@
-import { FormattedMessage, defineMessages, useIntl } from 'react-intl'
+import { FormattedMessage, defineMessages, useIntl, FormattedNumber } from 'react-intl'
 import Head from 'next/head'
 import Layout from '../components/Layout'
-import { useLocale } from '../components/IntlProvider'
 
 const { description } = defineMessages({
   description: {
@@ -12,7 +11,6 @@ const { description } = defineMessages({
 
 export default () => {
   const intl = useIntl()
-  const { setLocale } = useLocale()
   return (
     <Layout>
       <Head>
@@ -21,9 +19,15 @@ export default () => {
       <p>
         <FormattedMessage id="greeting" defaultMessage="Hello, World!" />
       </p>
-      <div>
-        <button onClick={() => setLocale('en')}>English</button> | <button onClick={() => setLocale('fr')}>Français</button>
-      </div>
+      <p>
+        {/**
+         * If your locale is cached as "fr" and you reload the page you should run into this warning on the client:
+         * @client Warning: Text content did not match. Server: "1,000" Client: "1 000"
+         * This happens because we need to polyfill the locale data on the node server:
+         * @server [React Intl] Missing locale data for locale: "fr". Using default locale: "en" as fallback
+         */}
+        <FormattedNumber value={1000} />
+      </p>
     </Layout>
   )
 }

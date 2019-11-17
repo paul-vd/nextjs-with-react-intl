@@ -1,6 +1,7 @@
 import { defineMessages, useIntl } from 'react-intl'
 import Head from 'next/head'
 import Nav from './Nav'
+import { useLocale } from './IntlProvider'
 
 const messages = defineMessages({
   title: {
@@ -11,7 +12,7 @@ const messages = defineMessages({
 
 export default ({ title = '', children }) => {
   const intl = useIntl()
-
+  const { setLocale } = useLocale()
   return (
     <div>
       <Head>
@@ -24,6 +25,10 @@ export default ({ title = '', children }) => {
       </header>
 
       {children}
+
+      <div>
+        <button onClick={() => setLocale('en')}>English</button> | <button onClick={() => setLocale('fr')}>Français</button>
+      </div>
     </div>
   )
 }

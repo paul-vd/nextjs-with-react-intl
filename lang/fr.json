@@ -5,5 +5,6 @@
   "description": "Un exemple d'application intégrant React Intl avec Next.js",
   "greeting": "Bonjour le monde!",
   "happy.days": "Jours heureux",
-  "dynamic.no.ssr": "Composant dynamique sans SSR"
+  "dynamic.no.ssr": "Composant dynamique sans SSR",
+  "html.example": "<div style='color:cornflowerblue;margin-top:10px;margin-bottom:10px;'>Je <span style='color: red'>suis</span> un <span style='color:blue'>message</span> au <span style='color:cadetblue'>format</span> <span style='color:crimson;'>HTML</span> <span style='color:orange'>avec</span> une variable: <strong>{VARIABLE}</strong></div>"
 }
